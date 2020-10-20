@@ -1,0 +1,32 @@
+package aplication;
+
+import java.util.Scanner;
+
+import entidades.Trabalhador;
+import entidades.enums.NivelTrabalhador;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+        System.out.print("entre com o nome do departamento");
+        String depNome = sc.nextLine();
+
+        System.out.print("entre com os dados do trabalhador");
+        System.out.print("nome: ");
+        String nomeTrabalhador = sc.nextLine();
+        
+        System.out.print("Nível: ");
+		String nivelTrabalhador = sc.nextLine();
+		
+        System.out.print("Base salarial: ");
+        double baseSalario = sc.nextDouble();
+        
+        Trabalhador trabalhador = new Trabalhador(nomeTrabalhador, NivelTrabalhador.valueOf(nivelTrabalhador), baseSalario, departamento)
+        
+        
+
+	}
+
+}

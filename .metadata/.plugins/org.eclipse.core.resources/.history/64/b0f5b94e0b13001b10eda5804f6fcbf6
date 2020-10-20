@@ -1,0 +1,76 @@
+package entidades;
+
+public class Trabalhador {
+	 private String nome;
+	    private NivelTrabalho nivel;
+	    private Double baseSalarial;
+
+	    private Departamento departamento;
+
+	    private List<ContratoHora> contratos = new ArrayList<>();
+
+	    public Trabalho(){
+
+	    }
+
+	    public Trabalho(String nome, NivelTrabalho nivel, Double baseSalarial, Departamento departamento){
+	        this.nome = nome;
+	        this.nivel = nivel;
+	        this.baseSalarial = baseSalarial;
+	        this.departamento = departamento;
+	    }
+
+	    public String getNome() {
+	        return nome;
+	    }
+	    public Double getBaseSalarial() {
+	        return baseSalarial;
+	    }
+	    public List<ContratoHora> getContratos() {
+	        return contratos;
+	    }
+	    public Departamento getDepartamento() {
+	        return departamento;
+	    }public NivelTrabalho getNivel() {
+	        return nivel;
+	    }
+
+	    public void setBaseSalarial(Double baseSalarial) {
+	        this.baseSalarial = baseSalarial;
+	    }
+	    /*public void setContratos(List<ContratoHora> contratos) {
+	        this.contratos = contratos;
+	    }*/
+	    public void setDepartamento(Departamento departamento) {
+	        this.departamento = departamento;
+	    }
+	    public void setNivel(NivelTrabalho nivel) {
+	        this.nivel = nivel;
+	    }
+	    public void setNome(String nome) {
+	        this.nome = nome;
+	    }
+
+	    public void addContrato(ContratoHora contrato) {
+	        this.contratos.add(contrato);
+	    }
+
+	    public void removerContrato(ContratoHora contrato) {
+	        this.contratos.remove(contrato);
+	    }
+
+	    public double income(int ano, int mes) {
+	        double soma = getBaseSalarial();
+
+	        Calendar cal = Calendar.getInstance();
+	        for (ContratoHora c : contratos) {
+	            cal.setTime(c.getDate());
+	            int c_ano = cal.get(Calendar.YEAR);
+	            int c_mes = 1 + cal.get(Calendar.MONTH);
+	            if (ano == c_ano && mes == c_mes) {
+	                soma += c.totalValor();
+	            }
+	        }
+	        return soma;
+	    }
+}
